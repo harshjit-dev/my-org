@@ -1,0 +1,76 @@
+<div>
+  <h1 class="w-full text-center text-2xl bg-gray-600 text-white h-[40px]">
+    Manage User
+    <button
+      class="bg-blue-500 text-white text-base px-2 py-2 float-right"
+      (click)="toggleModal()"
+    >
+      Add User
+    </button>
+  </h1>
+
+  <div>
+    <my-org-user-form
+      *ngIf="showModal"
+      [toggleModal]="toggleModal"
+      [showModal]="showModal"
+      (formSubmit)="formSubmit($event)"
+    >
+    </my-org-user-form>
+    <table class="table-auto hadow-lg bg-white self-center">
+      <thead>
+        <tr>
+          <th
+            class="bg-blue-100 border text-left px-8 py-4 text-center border-[1px] border-blue-500"
+          >
+            user name
+          </th>
+          <th
+            class="bg-blue-100 border text-left px-8 py-4 text-center border-[1px] border-blue-500"
+          >
+            gender
+          </th>
+          <th
+            class="bg-blue-100 border text-left px-8 py-4 text-center border-[1px] border-blue-500"
+          >
+            Email
+          </th>
+          <th
+            class="bg-blue-100 border text-left px-8 py-4 text-center border-[1px] border-blue-500"
+          >
+            Country
+          </th>
+          <th
+            class="bg-blue-100 border text-left px-8 py-4 text-center border-[1px] border-blue-500"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="border px-8 py-4">{{ user.username }}</td>
+          <td class="border px-8 py-4">{{ user.gender }}</td>
+          <td class="border px-8 py-4">{{ user.email }}</td>
+          <td class="border px-8 py-4">{{ user.country }}</td>
+          <!-- <td class="border px-8 py-4">
+            <button
+              class="bg-green-500 p-3 rounded-full text-white"
+              (click)="setUser(user)"
+            >
+              Update
+            </button>
+          </td> -->
+          <td class="border px-8 py-4">
+            <button
+              class="bg-red-500 p-3 rounded-full text-white"
+              (click)="deleteUser(user)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
